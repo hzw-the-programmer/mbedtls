@@ -125,6 +125,9 @@ set(src_tls
 )
 
 if(GEN_FILES)
+    message(CMAKE_CURRENT_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR})
+    message(CMAKE_CURRENT_BINARY_DIR=${CMAKE_CURRENT_BINARY_DIR})
+
     find_package(Perl REQUIRED)
 
     file(GLOB error_headers ${CMAKE_CURRENT_SOURCE_DIR}/../include/mbedtls/*.h)

@@ -50,6 +50,11 @@ if(NOT DEFINED MBEDTLS_AS_SUBPROJECT)
 endif()
 
 # Set the project root directory.
+
+message(CMAKE_CURRENT_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR})
+message(CMAKE_CURRENT_BINARY_DIR=${CMAKE_CURRENT_BINARY_DIR})
+message(CMAKE_HOST_WIN32=${CMAKE_HOST_WIN32})
+
 set(MBEDTLS_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 option(ENABLE_PROGRAMS "Build mbed TLS programs." ON)
@@ -61,6 +66,8 @@ if(CMAKE_HOST_WIN32)
 else()
     option(GEN_FILES "Generate the auto-generated files as needed" ON)
 endif()
+
+message(GEN_FILES=${GEN_FILES})
 
 option(DISABLE_PACKAGE_CONFIG_AND_INSTALL "Disable package configuration, target export and installation" ${MBEDTLS_AS_SUBPROJECT})
 
@@ -89,6 +96,8 @@ set(CTR_DRBG_128_BIT_KEY_WARNING "${WARNING_BORDER}"
 
 # Python 3 is only needed here to check for configuration warnings.
 if(NOT CMAKE_VERSION VERSION_LESS 3.15.0)
+    message(CMAKE_VERSION=${CMAKE_VERSION})
+
     set(Python3_FIND_STRATEGY LOCATION)
     find_package(Python3 COMPONENTS Interpreter)
     if(Python3_Interpreter_FOUND)
